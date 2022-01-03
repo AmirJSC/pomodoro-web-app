@@ -1,0 +1,150 @@
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+html {
+	font-size: 62.5%;
+}
+
+body {
+	background-color: #f2f2f2;
+}
+#container {
+	background: #ef6c57;
+}
+
+/* ------------------------------------------------------------------------ */
+/* Start of Navigation Bar */
+.nav-item {
+	letter-spacing:2px;
+	transition: 0.3s;
+}
+.nav-item:hover{
+	color: #f2f2f2 !important;
+}
+/* End of Navigation Bar */
+
+/* ------------------------------------------------------------------------ */
+
+/* Start of [Pomodoro, Short Break, Long Break] tabs */
+.time-tab {
+	padding: .9rem 1.7rem;
+	color: #1e1e1e;
+	transition: all 0.3s ease-in-out;
+	background: hsl(0, 100%, 90%);
+	border: solid 1px #1e1e1e;
+	box-shadow: inset 0 0 0 3px #ffffff;
+	margin-right: 1em;
+}
+
+.time-tab:hover {
+	text-decoration: underline;
+	background: hsl(0, 100%, 94%);
+	box-shadow: inset 0 0 0 4px #ffffff;
+}
+
+.time-tab:active {
+	background: hsl(0, 100%, 84%);
+}
+
+.time-tab:visited {
+	background: hsl(0, 100%, 94%);
+}
+
+/* End of [Pomodoro, Short Break, Long Break] tabs */
+
+/* ------------------------------------------------------------------------ */
+
+/* Start of Media Queries */
+@media only screen and (min-width: 2000px) {
+	/* for sumo sized (mac) screens */
+	#pomodoit, .nav-item {
+		font-size: 1.65rem;
+	}
+	.time-tab, .time-tab a:before, .time-tab a:after {
+		height: 5.5rem;
+		width: 18rem;
+		font-size: 1.7rem;
+	}
+}
+@media only screen and (min-width: 1440px) {
+	/* styles for browsers larger than 1440px; */
+	#pomodoit, .nav-item {
+		font-size: 1.60rem;
+	}
+	.time-tab, .time-tab a:before, .time-tab a:after {
+		height: 5.5rem;
+		width: 18rem;
+		font-size: 1.65rem;
+	}
+}
+@media only screen and (min-width: 960px) {
+	/* styles for browsers larger than 960px; */
+	#pomodoit, .nav-item {
+		font-size: 1.55rem;
+	}
+	.time-tab, .time-tab a:before, .time-tab a:after {
+		height: 4.5rem;
+		width: 14.727rem;
+		font-size: 1.6rem;
+	}
+}
+@media only screen and (min-width: 768px) {
+	/* default iPad screens */
+	#pomodoit, .nav-item {
+		font-size: 1.5rem;
+	}
+	.time-tab, .time-tab a:before, .time-tab a:after {
+		height: 4.2rem;
+		width: 12rem;
+		font-size: 1.5rem;
+	}
+}
+@media only screen and (min-width: 481px) {
+	/* For surface duo */
+	#pomodoit, .nav-item {
+		font-size: 1.5rem;
+	}
+	.time-tab, .time-tab a:before, .time-tab a:after {
+		height: 4.55rem;
+		width: 13rem;
+		font-size: 1.5rem;
+	}
+}
+@media only screen and (max-device-width: 480px) {
+	/* styles for mobile browsers smaller than 480px; (iPhone) */
+	#pomodoit, .nav-item {
+		font-size: 1.4rem;
+	}
+	.time-tab, .time-tab a:before, .time-tab a:after {
+		height: 3.5rem;
+		width: 10rem;
+		font-size: 1.06rem;
+	}
+}
+
+@media only screen and (max-device-width: 400px) {
+	/* styles for mobile browsers smaller than 480px; (iPhone) */
+	.nav-item {
+		font-size: 1rem;
+	}
+	.time-tab, .time-tab a:before, .time-tab a:after {
+		height: 3.15rem;
+		width: 9rem;
+		font-size: 1.06rem;
+	}
+}
+@media only screen and (max-device-width: 350px) {
+	#pomodoit, .nav-item {
+		font-size: 1rem;
+	}
+	.time-tab, .time-tab a:before, .time-tab a:after {
+		height: 2.73rem;
+		width: 7.8rem;
+		font-size: .8rem;
+	}
+}
+/* End of Media Queries */
+
+/* ------------------------------------------------------------------------ */

@@ -1,0 +1,27 @@
+Features you can see on the web page
+
+Setting - when you click, there's a pop up
+Adjust long break, default is 15
+Auto start breaks?
+Alarm sound (you can edit the volume and the type of sound)
+Ticking sound (you can edit the volume and the type of sound)
+
+Stats- there's a pop up when you click.
+
+Login- there's a separate login page.
+
+
+Basic Layout (similar to kenny's website)
+
+Pomodoro, Short Break, Long Break
+There's a loading bar that encloses the countdown or just a horizontal loading bar.
+Timer
+reset, play, pause buttons
+4 small circles
+Tasks
+Total minutes worked: 
+
+Day and Night mode
+
+
+
