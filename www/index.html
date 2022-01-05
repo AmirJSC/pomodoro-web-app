@@ -14,7 +14,7 @@
         type = "image/x-icon">
 	</head>
 	<body>
-		<div class="container-lg bg-warning" id="main-container">
+		<div class="container-lg bg-warning py-5" id="main-container">
 			<main class="m-lg-5" id="container">
 				<!-- Navigation Bar -->
 				<nav class="navbar navbar-expand-md navbar-light">
@@ -25,9 +25,9 @@
 					</button>
 					<div class="collapse navbar-collapse justify-content-end mx-auto" id="navbarNavAltMarkup">
 						<div class="navbar-nav">
-								<a class="nav-item nav-link mx-4" href="">Settings<span class="sr-only">(current)</span></a>
-								<a class="nav-item nav-link mx-4" href="">Report</a>
-								<a class="nav-item nav-link mx-4" href="">Login</a>
+							<a class="nav-item nav-link mx-4" href="">Settings<span class="sr-only">(current)</span></a>
+							<a class="nav-item nav-link mx-4" href="">Report</a>
+							<a class="nav-item nav-link mx-4" href="">Login</a>
 						</div>
 					</div>
 				</nav>
@@ -35,27 +35,16 @@
 			<!-- Start of Loading Bar -->
 			<!-- End of Loading Bar -->
 			<!-- Start of [Pomodoro, Short Break, Long Break] tabs -->
-			<div class="d-flex flex-row justify-content-center my-2 mx-auto">
-				<button class="timer-mode active" id="pomodoro-mode">Pomodoro</button>
-				<button class="timer-mode" id="shortBreak-mode">Short Break</button>
-				<button class="timer-mode" id="longBreak-mode">Long Break</button>
-			</div>
-			<!-- End of [Pomodoro, Short Break, Long Break] tabs -->
-			<!-- Start of Countdown -->
-			<div class="d-flex flex-row align-items-center justify-content-center my-5 mx-auto bg-success" id="timerCountdown">
-				<p id="minutes">25</p>
-				<p id="colon">:</p>
-				<p id="seconds">00</p>
-			</div>
-
-			<!-- End of Countdown -->
-			<!-- Start of Buttons for pause, start, reset -->
 				<div class="d-flex flex-row justify-content-center my-2 mx-auto">
-				<button class="" id="stopBtn">Stop</button>
-				<button class="" id="startBtn">Start</button>
-				<button class="" id="resetBtn">Reset</button>
-			</div>
-			<!-- End of Buttons for pause, start, reset -->
+					<button class="timer-mode active" id="pomodoro-mode">Pomodoro</button>
+					<button class="timer-mode" id="shortBreak-mode">Short Break</button>
+					<button class="timer-mode" id="longBreak-mode">Long Break</button>
+				</div>
+				<!-- End of [Pomodoro, Short Break, Long Break] tabs -->
+				<!-- Start of Countdown -->
+				<div class="mx-auto bg-primary p-5" id="timerCountdown">
+				</div>
+			<!-- End of Countdown -->
 			</main>
 		</div>
 		<!-- JS Dependencies -->

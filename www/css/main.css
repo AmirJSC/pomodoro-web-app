@@ -66,8 +66,8 @@ body {
 		font-size: 1.65rem;
 	}
 	#timerCountdown {
-		height: 26rem;
-		width: 26rem;
+		height: 30rem;
+		width: 30rem;
 	}
 	#minutes, #colon, #seconds{
 		font-size: 10rem;
@@ -84,8 +84,8 @@ body {
 		font-size: 1.65rem;
 	}
 	#timerCountdown {
-		height: 26rem;
-		width: 26rem;
+		height: 30rem;
+		width: 30rem;
 	}
 	#minutes, #colon, #seconds{
 		font-size: 10rem;
@@ -119,8 +119,8 @@ body {
 		font-size: 1.5rem;
 	}
 	#timerCountdown {
-		height: 26rem;
-		width: 26rem;
+		height: 30rem;
+		width: 30rem;
 	}
 	#minutes, #colon, #seconds{
 		font-size: 10rem;
