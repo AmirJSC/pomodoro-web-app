@@ -1,74 +1,82 @@
-// Adds the onclick events to the time-tabs.
-function addEvents() {
-	var tabs = document.getElementsByClassName("timer-mode");
-	for (var i=0; i < tabs.length; i++) {
-		tabs[i].addEventListener("click", setActiveTab);
-	};
+const timer = {
+	pomodoro: 25,
+	shortBreak: 5,
+	longBreak: 15,
+	longBreakInterval: 4,
+	sessions: 0
+};
 
-	function setActiveTab() {
-		var current = document.getElementsByClassName("active");
-		current[0].className = current[0].className.replace(" active", "");
-		this.className += " active";
-	}
-} 
+let interval;
 
-window.addEventListener('load', addEvents);
+document.querySelector("#controlButtons").addEventListener("click", (event) => {
+	if (event.target.id == 'startBtn') 
+		startTimer();
+	else if (event.target.id == 'stopBtn') 
+		stopTimer();
+});
+document.querySelector("#mode-buttons").addEventListener('click', handleMode);
 
-class Timer {
-	constructor(element) {
-		element.innerHTML = Timer.getHTML();
+function getRemainingTime(endTime) {
+	const currentTime = Date.parse(new Date());
+	const difference = endTime - currentTime;
 
-		this.interface = {
-		minutes: element.querySelector("#minutes"),
-		seconds: element.querySelector("seconds"),
-		stopBtn: element.querySelector("stopBtn"),
-		startBtn: element.querySelector("startBtn"),
-		resetBtn: element.querySelector("resetBtn"),
-		};
+	const total = Number.parseInt(difference/1000, 10);
+	const minutes = Number.parseInt((total /60) % 60, 10);
+	const seconds = Number.parseInt(total % 60, 10);
 
-		this.remainingSeconds = 0;
-
-		this.interface.stopBtn.addEventListener("click", () => {
-
-		});
-
-		this.interface.startBtn.addEventListener("click", () => {
-
-		});
-
-		this.interface.resetBtn.addEventListener("click", () => {})
-	}
-
-
-	// Sets up the minutes and seconds for each timer mode // A method that changes the timer whenever you change tabs. 
-		 // Initialize 25 in minutes and 00 in seconds as the starting 
-		 // Call updateInterfaceTime
-	// A method that updates the interfacetime
-
-	// A method that resets the timer
-		 // Call updateInterfaceTime
-	// A method that starts the timer
-		// Call updateInterfaceTime
-	// A method that stops the timer
-		// Call updateInterfaceTime
-
-
-
-	static getHTML() {
-		return	`<div class="d-flex flex-row align-items-center justify-content-center bg-success">
-					<p id="minutes">25</p>
-		 			<p id="colon">:</p>
-		 			<p id="seconds">00</p>
-		 		</div>
-		 		<div class="d-flex flex-row justify-content-center p-5 bg-warning">
-					<button class="" id="stopBtn">Stop</button>
-					<button class="" id="startBtn">Start</button>
-					<button class="" id="resetBtn">Reset</button>
-				</div>`;
+	return {
+		total: total,
+		minutes: minutes,
+		seconds: seconds
 	}
 }
 
-let newTimer = new Timer(
-	document.querySelector("#timerCountdown")
-);
+function startTimer()  {
+	let {total} = timer.remainingTime;
+	const endTime =  Date.parse(new Date()) + total * 1000;
 
+	interval = setInterval(function() {
+		timer.remainingTime = getRemainingTime(endTime);
+		updateClock();
+
+		total = timer.remainingTime.total;
+		if (total <= 0) {
+			clearInterval(interval);
+		}
+	}, 1000);
+}
+
+function stopTimer() {
+	clearInterval(interval);
+}
+
+function updateClock() {
+  	const minutes = timer.remainingTime.minutes.toString().padStart(2, '0');
+  	const seconds = timer.remainingTime.seconds.toString().padStart(2, '0');
+
+	document.getElementById('minutes').innerHTML = minutes;
+	document.getElementById('seconds').innerHTML = seconds;
+}
+
+function switchMode(mode) {
+	timer.mode = mode;
+	timer.remainingTime = {
+		total: timer[mode] * 60,
+		minutes: timer[mode],
+		seconds: 0
+	}
+	updateClock();
+}
+
+function handleMode(event) {
+	const mode = event.target;
+	if (mode.id === "mode-buttons") return;
+	const currentMode = document.getElementsByClassName("active");
+	currentMode[0].className = currentMode[0].className.replace(" active", "")
+	mode.classList.add("active");
+
+	switchMode(mode.id);
+	stopTimer();
+}
+
+window.onload = switchMode('pomodoro');

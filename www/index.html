@@ -35,14 +35,22 @@
 			<!-- Start of Loading Bar -->
 			<!-- End of Loading Bar -->
 			<!-- Start of [Pomodoro, Short Break, Long Break] tabs -->
-				<div class="d-flex flex-row justify-content-center my-2 mx-auto">
-					<button class="timer-mode active" id="pomodoro-mode">Pomodoro</button>
-					<button class="timer-mode" id="shortBreak-mode">Short Break</button>
-					<button class="timer-mode" id="longBreak-mode">Long Break</button>
+				<div class="d-flex flex-row justify-content-center my-2 mx-auto" id="mode-buttons">
+					<button class="timer-mode active" id="pomodoro">Pomodoro</button>
+					<button class="timer-mode" id="shortBreak">Short Break</button>
+					<button class="timer-mode" id="longBreak">Long Break</button>
 				</div>
 				<!-- End of [Pomodoro, Short Break, Long Break] tabs -->
 				<!-- Start of Countdown -->
-				<div class="mx-auto bg-primary p-5" id="timerCountdown">
+				<div class="d-flex flex-row align-items-center justify-content-center bg-success mx-auto" id="timerCountdown">
+					<p id="minutes">25</p>
+		 			<p id="colon">:</p>
+		 			<p id="seconds">00</p>
+		 		</div>
+		 		<div class="d-flex flex-row justify-content-center p-5 bg-warning" id="controlButtons">
+					<button class="" id="stopBtn">Stop</button>
+					<button class="" id="startBtn">Start</button>
+					<button class="" id="resetBtn">Reset</button>
 				</div>
 			<!-- End of Countdown -->
 			</main>
