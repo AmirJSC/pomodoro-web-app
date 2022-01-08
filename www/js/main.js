@@ -10,7 +10,6 @@ let interval;
 controlButton = document.querySelector("#controlButton");
 controlButton.addEventListener("click", () => {
 	const control = controlButton.dataset.control;
-	console.log(control);
 	switch (control) {
 		case 'start':
 			startTimer();
@@ -30,7 +29,6 @@ function startTimer()  {
 	interval = setInterval(function() {
 		timer.remainingTime--;;
 		updateClock();
-		console.log(timer.remainingTime);
 
 		remainingTime = timer.remainingTime;
 		if (remainingTime < 0) {
@@ -104,5 +102,5 @@ function handleMode(event) {
 	switchMode(mode);
 	stopTimer();
 }
-console.log(controlButton.dataset.control)
+
 window.onload = switchMode('pomodoro');
