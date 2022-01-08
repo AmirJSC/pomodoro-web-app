@@ -28,7 +28,7 @@ function startTimer()  {
 	controlButton.textContent = 'stop';
 
 	interval = setInterval(function() {
-		timer.remainingTime -= 1;
+		timer.remainingTime--;;
 		updateClock();
 		console.log(timer.remainingTime);
 
@@ -86,10 +86,23 @@ function switchMode(mode) {
 // mode = event.target
 function handleMode(event) {
 	const mode = event.target.id;
+	// When timer is still running and you want to switch to one of the modes, a prompt appears.
+	if (controlButton.dataset.control === 'stop') {
+		clearInterval(interval);
+		if (confirm('Are you sure you want to switch?') === true) {
+			switchMode(mode);
+			stopTimer();
+			return;
+		}
+		else {
+			startTimer();
+			return;
+		}
+	}
 	if (mode === "mode-buttons") return;
 
 	switchMode(mode);
 	stopTimer();
 }
-
+console.log(controlButton.dataset.control)
 window.onload = switchMode('pomodoro');
