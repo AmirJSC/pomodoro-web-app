@@ -6,6 +6,7 @@ const timer = {
 };
 
 let interval;
+let running = false;
 
 controlButton = document.querySelector("#controlButton");
 controlButton.addEventListener("click", () => {
@@ -26,12 +27,14 @@ function startTimer()  {
 	controlButton.dataset.control  = 'stop';
 	controlButton.textContent = 'stop';
 
+	running = true;
 	interval = setInterval(function() {
 		timer.remainingTime--;;
 		updateClock();
 
 		remainingTime = timer.remainingTime;
 		if (remainingTime < 0) {
+			running = false;
 			clearInterval(interval);
 			if (timer.mode === 'pomodoro') {
 				timer.sessions++;
@@ -56,10 +59,11 @@ function stopTimer() {
 }
 
 function resetTimer() {
-	if (controlButton.dataset.control === 'stop') {
+	if (running === true) {
 		if (confirm("Are you sure you want to reset? The remaining time will not be tallied in the report.") === true) {
 				stopTimer();
 				switchMode(timer.mode);
+				running = false;
 		}
 		else {
 			clearInterval(interval);
@@ -96,9 +100,10 @@ function switchMode(mode) {
 function handleMode(event) {
 	const mode = event.target.id;
 	// First if-statement asks if the timer is currently running. 
-	if (controlButton.dataset.control === 'stop') {
+	if (running === true) {
 		if (confirm('Are you sure you want to switch?') === true) {
 			stopTimer();
+			running = false;
 			switchMode(mode);
 			return;
 		}
