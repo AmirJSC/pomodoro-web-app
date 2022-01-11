@@ -14,42 +14,41 @@
         type = "image/x-icon">
 	</head>
 	<body>
-		<div class="container-lg bg-warning py-5" id="main-container">
-			<main class="m-lg-5" id="container">
-				<!-- Navigation Bar -->
-				<nav class="navbar navbar-expand-md navbar-light">
-					<a class="navbar-brand" id="pomodoit" href="./index.html">
-					<img src="./assets/img/tomato-icon5.png"> Pomodoit</a>
-					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-						<span class="navbar-toggler-icon"></span>
-					</button>
-					<div class="collapse navbar-collapse justify-content-end mx-auto" id="navbarNavAltMarkup">
-						<div class="navbar-nav">
-							<a class="nav-item nav-link mx-4" href="">Settings<span class="sr-only">(current)</span></a>
-							<a class="nav-item nav-link mx-4" href="">Report</a>
-							<a class="nav-item nav-link mx-4" href="">Login</a>
-						</div>
+		<main class="container" id="main-container">
+			<!-- Navigation Bar -->
+			<nav class="navbar navbar-expand-md navbar-light">
+				<a class="navbar-brand" id="pomodoit" href="./index.html">
+				<img src="./assets/img/tomato-icon5.png"> Pomodoit</a>
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse justify-content-end mx-auto" id="navbarNavAltMarkup">
+					<div class="navbar-nav">
+						<a class="nav-item nav-link mx-4" href="">Settings<span class="sr-only">(current)</span></a>
+						<a class="nav-item nav-link mx-4" href="">Report</a>
+						<a class="nav-item nav-link mx-4" href="">Login</a>
 					</div>
-				</nav>
+			</nav>
 			<!-- End of Navigation Bar -->
 			<!-- Start of Loading Bar -->
 			<!-- End of Loading Bar -->
 			<!-- Start of [Pomodoro, Short Break, Long Break] tabs -->
-				<div class="d-flex flex-row justify-content-center my-2 mx-auto" id="mode-buttons">
+				<div class="d-flex flex-row justify-content-center mt-4 mb-2 mx-auto" id="mode-buttons">
 					<button class="timer-mode active" id="pomodoro">Pomodoro</button>
 					<button class="timer-mode" id="shortBreak">Short Break</button>
 					<button class="timer-mode" id="longBreak">Long Break</button>
 				</div>
 				<!-- End of [Pomodoro, Short Break, Long Break] tabs -->
 				<!-- Start of Countdown -->
-				<div class="d-flex flex-row align-items-center justify-content-center bg-success mx-auto" id="timerCountdown">
-					<p id="minutes">25</p>
-		 			<p id="colon">:</p>
-		 			<p id="seconds">00</p>
+				<div class="d-flex flex-row align-items-center justify-content-center mx-auto" id="timerCountdown">
+					<p class="clockFont" id="minutes">25</p>
+		 			<p class="clockFont" id="colon">:</p>
+		 			<p class="clockFont" id="seconds">00</p>
 		 		</div>
-		 		<div class="d-flex flex-row justify-content-center p-5 bg-warning">
-					<button class="" id="controlButton" data-control = "start">Start</button>
-					<button class="" id="resetButton" data-control = "reset">Reset</button>
+		 		<div class="d-flex flex-row justify-content-center p-5">
+					<i class="fas fa-play fa-5x mx-4" data-control="start" id="controlButton"></i>
+					<i class="fas fa-undo-alt fa-5x mx-4" data-control="reset" id="resetButton"></i>
+		<!-- 			<i class="fas fa-play fa-4x" style="color: #f2f2f2"></i> -->
 				</div>
 			<!-- End of Countdown -->
 			</main>

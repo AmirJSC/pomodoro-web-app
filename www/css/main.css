@@ -1,7 +1,13 @@
+ /* Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300&family=Nunito:wght@700&display=swap');
+
+
+
 * {
 	padding: 0;
 	margin: 0;
 	box-sizing: border-box;
+	font-family: 'Inter', sans-serif;
 }
 html {
 	font-size: 62.5%;
@@ -10,20 +16,20 @@ html {
 body {
 	background-color: #f2f2f2;
 }
-#container {
+
+#main-container {
 	background: #ef6c57;
 }
-#main-container {
-	border-radius: 8px;
+
+#pomodoit, #controlButton, #resetButton  {
+	color: #f2f2f2;
 }
 
-/* ------------------------------------------------------------------------ */
+/* ------------------------------------------------------------------------ 
 /* Start of Navigation Bar */
 .nav-item {
 	letter-spacing:2px;
 	transition: 0.3s;
-}
-.nav-item:hover{
 	color: #f2f2f2 !important;
 }
 /* End of Navigation Bar */
@@ -63,32 +69,30 @@ body {
 	.timer-mode {
 		height: 4rem;
 		width: 15rem;
-		font-size: 1.65rem;
+		font-size: 1.5rem;
+		color: #f2f2f2;
 	}
 	#timerCountdown {
-		height: 30rem;
+		height: 25rem;
 		width: 30rem;
 	}
 	#minutes, #colon, #seconds{
-		font-size: 10rem;
+		font-size: 12rem;
+		font-family: 'Nunito', sans-serif;
+		color: #f2f2f2;
 	}
+	#main-container {
+		border-radius: 8px;
+	}
+/*	#progressBar {
+		width: 410px;
+		height: 3px;
+	}*/
 }
 @media only screen and (max-width: 1440px) {
 	/* Ipad Pro */
 	#pomodoit, .nav-item {
 		font-size: 1.60rem;
-	}
-	.timer-mode {
-		height: 4rem;
-		width: 15rem;
-		font-size: 1.65rem;
-	}
-	#timerCountdown {
-		height: 30rem;
-		width: 30rem;
-	}
-	#minutes, #colon, #seconds{
-		font-size: 10rem;
 	}
 }
 @media only screen and (max-width: 960px) {
@@ -98,14 +102,12 @@ body {
 	.timer-mode {
 		height: 3.733rem;
 		width: 14.00rem;
-		font-size: 1.6rem;
+		font-size: 1.5rem;
+		color: #f2f2f2;
 	}
 	#timerCountdown {
 		height: 26rem;
 		width: 26rem;
-	}
-	#minutes, #colon, #seconds{
-		font-size: 10rem;
 	}
 }
 @media only screen and (max-width: 768px) {
@@ -116,14 +118,18 @@ body {
 	.timer-mode {
 		height: 3.2rem;
 		width: 12rem;
-		font-size: 1.5rem;
+		font-size: 1.4rem;
+		color: #f2f2f2;
 	}
 	#timerCountdown {
 		height: 30rem;
 		width: 30rem;
 	}
-	#minutes, #colon, #seconds{
-		font-size: 10rem;
+}
+@media only screen and (max-width: 720px) {
+	/*For surface duo*/
+	#main-container {
+	border-radius: 0px;
 	}
 }
 @media only screen and (max-device-width: 480px) {
@@ -134,15 +140,25 @@ body {
 	.timer-mode {
 		height: 2.667rem;
 		width: 10rem;
-		font-size: 1.2rem;
+		font-size: 1.1rem;
+		color: #f2f2f2;
 	}
 	#timerCountdown {
-		height: 25rem;
-		width: 25rem;
+		height: 20rem;
+		width: 30rem;
 	}
 	#minutes, #colon, #seconds{
-		font-size: 8rem;
+		font-size: 9.3rem;
+		font-family: 'Nunito', sans-serif;
+		color: #f2f2f2;
 	}
+	#main-container {
+	border-radius: 0px;
+	}
+/*	#progressBar {
+		width: 253px;
+		height: 3px;
+	}*/
 }
 
 @media only screen and (max-device-width: 400px) {
@@ -153,14 +169,8 @@ body {
 	.timer-mode {
 		height: 2.4rem;
 		width: 9rem;
-		font-size: 1.2rem;
-	}
-	#timerCountdown {
-		height: 25rem;
-		width: 25rem;
-	}
-	#minutes, #colon, #seconds{
-		font-size: 8rem;
+		font-size: 1.1rem;
+		color: #f2f2f2;
 	}
 }
 @media only screen and (max-device-width: 350px) {
@@ -171,14 +181,8 @@ body {
 	.timer-mode {
 		height: 2.0rem;
 		width: 7.5rem;
-		font-size: 1rem;
-	}
-	#timerCountdown {
-		height: 25rem;
-		width: 25rem;
-	}
-	#minutes, #colon, #seconds{
-		font-size: 8rem;
+		font-size: .9rem;
+		color: #f2f2f2;
 	}
 }
 /* End of Media Queries */
