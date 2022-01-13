@@ -25,6 +25,22 @@ body {
 	color: #f2f2f2;
 }
 
+#taskButton {
+	background: #f2f2f2;
+	border-radius: 3px;
+	border: none;
+	color: #ef6c57;
+	font-size: 2.0rem;
+	font-weight: 900;
+	letter-spacing: 1px;
+}
+
+#taskButton:active {
+  	background-color: #F0F0F0;
+  	box-shadow: 0 5px #666;
+  	transform: translateY(4px);
+  }
+
 /* ------------------------------------------------------------------------ 
 /* Start of Navigation Bar */
 .nav-item {
@@ -92,6 +108,10 @@ body {
 	}
 	#main-container {
 		border-radius: 8px;
+	}
+	#taskButton {
+		height: 5rem;
+		width: 18rem;
 	}
 }
 @media only screen and (max-width: 1440px) {
