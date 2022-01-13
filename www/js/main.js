@@ -1,7 +1,7 @@
 const timer = {
-	pomodoro: 25,
-	shortBreak: 5,
-	longBreak: 15,
+	pomodoro: .1,
+	shortBreak: .1,
+	longBreak: .1,
 	sessions: 0
 };
 
@@ -28,6 +28,7 @@ function startTimer()  {
 	controlButton.classList.remove("fa-play");
 	controlButton.classList.add("fa-pause");
 
+
 	running = true;
 	interval = setInterval(function() {
 		timer.remainingTime--;;
@@ -39,6 +40,7 @@ function startTimer()  {
 			clearInterval(interval);
 			if (timer.mode === 'pomodoro') {
 				timer.sessions++;
+				document.querySelector("#pomodoroCount").textContent = 	`Pomodoro: ${timer.sessions}`;
 				if (timer.sessions % 4 == 0)
 					switchMode('longBreak');
 				else
