@@ -95,7 +95,7 @@ body {
 	}
 }
 @media only screen and (max-width: 1440px) {
-	/* Ipad Pro */
+	/* Ipad Pro, ipad air, surface pro 7 */
 	#pomodoit, .nav-item {
 		font-size: 1.60rem;
 	}
@@ -116,7 +116,7 @@ body {
 	}
 }
 @media only screen and (max-width: 768px) {
-	/* default iPad screens */
+	/* default iPad screens - IPAD MINI*/
 	#pomodoit, .nav-item {
 		font-size: 1.5rem;
 	}
@@ -141,7 +141,7 @@ body {
 	}
 }
 @media only screen and (max-device-width: 480px) {
-	/* For Pixel 2 & XL*/
+	/* Iphone XR, s20 ultra*/
 	#pomodoit, .nav-item {
 		font-size: 1.4rem;
 	}
@@ -169,7 +169,7 @@ body {
 }
 
 @media only screen and (max-device-width: 400px) {
-	/* styles for mobile browsers smaller than 480px; iphone5, Galaxy S5, Moto G4, Iphone10 */
+	 /*Iphone10 Iphone 12 pro, pixel, s8+  */
 	.nav-item {
 		font-size: 1rem;
 	}
