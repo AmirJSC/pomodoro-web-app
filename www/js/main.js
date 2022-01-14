@@ -8,6 +8,10 @@ const timer = {
 let interval;
 let running = false;
 
+document.querySelector("#resetButton").addEventListener('click', resetTimer);
+document.querySelector("#mode-buttons").addEventListener('click', handleMode);
+window.addEventListener("click", hideDropdownContent);
+
 controlButton = document.querySelector("#controlButton");
 controlButton.addEventListener("click", () => {
 	const control = controlButton.dataset.control;
@@ -20,8 +24,6 @@ controlButton.addEventListener("click", () => {
 			break;
 	}
 });
-document.querySelector("#resetButton").addEventListener('click', resetTimer);
-document.querySelector("#mode-buttons").addEventListener('click', handleMode);
 
 function startTimer()  {
 	controlButton.dataset.control  = 'stop';
@@ -132,6 +134,15 @@ function breakSound() {
     breakSound.play();
 }
 
+function hideDropdownContent() {
+	if (event.target.id == 'musicDropdown' || event.target.id == 'musicButton') {
+		document.querySelector(".dropdown-content").classList.add("show");
+	}
+	else {
+		document.querySelector(".dropdown-content").classList.remove("show");
+	}
+}
+
 window.onload = switchMode('pomodoro');
 window.onbeforeunload = function(){
 	if (running)
@@ -139,3 +150,8 @@ window.onbeforeunload = function(){
     else
     window.onbeforeunload = null;
 }
+
+
+
+
+
