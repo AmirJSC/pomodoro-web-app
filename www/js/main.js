@@ -9,6 +9,7 @@ let interval;
 let running = false;
 // Initialize values for the music/audio
 let audio = new Audio();
+let isPlaying = false;
 var toggle = {'none': 'block', 'block': 'none'};
 var div = document.getElementsByClassName('dropdown-content')[0];
 div.style.display='none';
@@ -18,7 +19,7 @@ document.querySelector("#resetButton").addEventListener('click', resetTimer);
 document.querySelector("#mode-buttons").addEventListener('click', handleMode);
 document.querySelector("#musicButton").addEventListener("click", () => div.style.display=toggle[div.style.display]);
 
-document.querySelectorAll(".audioLinks").forEach((audio) => audio.addEventListener('click', selectMusic));
+document.querySelectorAll(".audioLinks").forEach((audio) => audio.addEventListener('click', selectAudio));
 
 
 // Control Button - Play, Pause
@@ -32,6 +33,7 @@ function setupControlButton() {
 		case 'start':
 		if (timer.mode === "pomodoro") {
 			audio.play();
+			isPlaying = true;
 		}
 
 		startTimer();
@@ -39,6 +41,7 @@ function setupControlButton() {
 		case'stop':
 		if (timer.mode === "pomodoro") {
 			fix(audio);
+			isPlaying = false;
 		}
 
 		stopTimer();
@@ -119,6 +122,9 @@ function updateClock() {
 
 
 function switchMode(mode) {
+	if (isPlaying) {
+		fix(audio);
+	}
 	timer.mode = mode;
 	timer.remainingTime = timer[mode] * 60;
 
@@ -159,12 +165,13 @@ function breakSound() {
 }
 
 
-function selectMusic() {
+function selectAudio() {
 	audio.src = `./assets/audio/${event.target.id}.mp3`
 }
 
 
 // To fix the error: The play() request was interrupted by a call to pause(). Saw this in StackOverflow.
+// This pauses the audio currently playing.
 function fix(audio) {
 	var thePromise = audio.play();
 	if (thePromise != undefined) {
