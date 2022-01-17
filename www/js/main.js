@@ -1,7 +1,7 @@
 const timer = {
-	pomodoro: 25,
-	shortBreak: 5,
-	longBreak: 15,
+	pomodoro: .1,
+	shortBreak: .1,
+	longBreak: .1,
 	sessions: 0
 };
 
@@ -68,10 +68,7 @@ function startTimer()  {
 			if (timer.mode === 'pomodoro') {
 				timer.sessions++;
 				document.querySelector("#pomodoroCount").textContent = 	`Pomodoro: ${timer.sessions}`;
-				if (timer.sessions % 4 == 0)
-					switchMode('longBreak');
-				else
-					switchMode('shortBreak');
+				timer.sessions % 4 == 0 ? switchMode('longBreak') : switchMode('shortBreak');
 			}
 			else {
 				switchMode('pomodoro');
@@ -166,6 +163,11 @@ function breakSound() {
 
 
 function selectAudio() {
+	if(event.target.id==='none') {
+		audio.muted = true;
+		return;
+	}
+	audio.muted = false;
 	audio.src = `./assets/audio/${event.target.id}.mp3`
 }
 
