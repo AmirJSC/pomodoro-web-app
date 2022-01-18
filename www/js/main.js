@@ -6,10 +6,10 @@ const timer = {
 };
 // Initialize values for the timer
 let interval;
-let running = false;
+let isTimerRunning = false;
 // Initialize values for the music/audio
 let audio = new Audio();
-let isPlaying = false;
+let isAudioPlaying = false;
 
 document.querySelector("#resetButton").addEventListener('click', resetTimer);
 // Mode Buttons - Pomodoro, Short Break, Long Break
@@ -29,7 +29,7 @@ function setupControlButton() {
 		// Plays the audio only when the mode is pomodoro
 		if (timer.mode === "pomodoro") {
 			audio.play();
-			isPlaying = true;
+			isAudioPlaying = true;
 		}
 
 		startTimer();
@@ -38,7 +38,7 @@ function setupControlButton() {
 		// Stops the audio
 		if (timer.mode === "pomodoro") {
 			fix(audio);
-			isPlaying = false;
+			isAudioPlaying = false;
 		}
 
 		stopTimer();
@@ -53,14 +53,14 @@ function startTimer()  {
 	controlButton.classList.remove("fa-play");
 	controlButton.classList.add("fa-pause");
 
-	running = true;
+	isTimerRunning = true;
 	interval = setInterval(function() {
 		timer.remainingTime--;;
 		updateClock();
 
 		remainingTime = timer.remainingTime;
 		if (remainingTime < 0) {
-			running = false;
+			isTimerRunning = false;
 			clearInterval(interval);
 			if (timer.mode === 'pomodoro') {
 				timer.sessions++;
@@ -86,12 +86,12 @@ function stopTimer() {
 
 
 function resetTimer() {
-	if (running === true) {
+	if (isTimerRunning === true) {
 		if (confirm("Are you sure you want to reset? The remaining time will not be tallied in the report.") === true) {
 			stopTimer();
 			fix(audio);
 			switchMode(timer.mode);
-			running = false;
+			isTimerRunning = false;
 		}
 		else {
 			clearInterval(interval);
@@ -120,7 +120,8 @@ function updateClock() {
 
 function switchMode(mode) {
 	// Stops the audio when you switch mode from pomodoro to shortBreak or longBreak.
-	if (isPlaying) {
+	// This is the error if if-statement is not playing: DOMException: play() failed because the user didn't interact with the document first.
+	if (isAudioPlaying) {
 		fix(audio);
 	}
 	timer.mode = mode;
@@ -137,10 +138,10 @@ function switchMode(mode) {
 function handleMode(event) {
 	const mode = event.target.id;
 	// First if-statement asks if the timer is currently running. 
-	if (running === true) {
+	if (isTimerRunning === true) {
 		if (confirm('Are you sure you want to switch?') === true) {
 			stopTimer();
-			running = false;
+			isTimerRunning = false;
 			switchMode(mode);
 			return;
 		}
@@ -199,7 +200,7 @@ window.onclick = function() {
 window.onload = switchMode('pomodoro');
 // Asks the user if he wants to leave the web app
 window.onbeforeunload = function(){
-	if (running)
+	if (isTimerRunning)
 		return 'message'
 	else
 		window.onbeforeunload = null;
