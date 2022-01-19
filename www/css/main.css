@@ -11,14 +11,18 @@
  }
  html {
  	font-size: 62.5%;
+ 	height: 100%;
  }
 
  body {
  	background-color: #f2f2f2;
+ 	height: 100%;
  }
 
  #main-container {
  	background: #ef6c57;
+ 	height: 100%;
+ 	width: 100%;
  }
 
  #pomodoit, #controlButton, #resetButton  {

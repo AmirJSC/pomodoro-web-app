@@ -1,7 +1,7 @@
 const timer = {
-	pomodoro: .1,
-	shortBreak: .1,
-	longBreak: .1,
+	pomodoro: 25,
+	shortBreak: 5,
+	longBreak: 15,
 	sessions: 0
 };
 // Initialize values for the timer
@@ -9,6 +9,7 @@ let interval;
 let isTimerRunning = false;
 // Initialize values for the music/audio
 let audio = new Audio();
+audio.loop = true;
 let isAudioPlaying = false;
 
 document.querySelector("#resetButton").addEventListener('click', resetTimer);
