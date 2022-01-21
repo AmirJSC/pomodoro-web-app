@@ -19,10 +19,29 @@
  	height: 100%;
  }
 
+ main {
+ 	height: 100%;
+ 	widht: 100%;
+ }
+
+h2 {
+	font-size: 2.1rem;
+	color: rgb(61, 0, 0);
+}
+ li {
+ 	font-size: 1.8rem;
+ 	line-height: 3rem;
+ }
+ p {
+ 	font-size: 1.72rem;
+ 	line-height: 3rem;
+ }
+ h3 {
+ 	font-size: 1.8rem;
+ }
+
  #main-container {
  	background: #ef6c57;
- 	height: 100%;
- 	width: 100%;
  }
 
  #pomodoit, #controlButton, #resetButton  {
@@ -151,19 +170,33 @@
 		font-family: 'Nunito', sans-serif;
 		color: #f2f2f2;
 	}
+	main {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: center;
+	}
 	#main-container {
 		border-radius: 8px;
+		height: 92%;
+ 		width: 97%;
 	}
 	#taskButton, #musicButton {
 		height: 5rem;
 		width: 18rem;
 	}
+	article {
+	width: 50%;
+}
 }
 @media only screen and (max-width: 1440px) {
 	/* Ipad Pro, ipad air, surface pro 7 */
 	#pomodoit, .nav-item {
 		font-size: 1.60rem;
 	}
+	article {
+	width: 80%;
+}
 }
 @media only screen and (max-width: 960px) {
 	#pomodoit, .nav-item {
@@ -202,7 +235,7 @@
 @media only screen and (max-width: 720px) {
 	/*For surface duo*/
 	#main-container {
-		border-radius: 0px;
+		border-radius: 8px;
 	}
 }
 @media only screen and (max-device-width: 480px) {
@@ -230,7 +263,16 @@
 	}
 	#main-container {
 		border-radius: 0px;
+		height: 100%;
+ 		width: 100%;
 	}
+	#musicButton, #taskButton {
+		height: 50px;
+		width: 150px;
+	}
+	article {
+	width: 100%;
+}
 }
 
 @media only screen and (max-device-width: 400px) {
@@ -260,11 +302,20 @@
 		color: #f2f2f2;
 	}
 	#timerCountdown {
-		height: 20rem;
-		width: 20rem;
+		height: 18rem;
+		width: 18rem;
+	}
+	#minutes, #colon, #seconds{
+		font-size: 8.0rem;
+		font-family: 'Nunito', sans-serif;
+		color: #f2f2f2;
 	}
 	#pomodoroCount {
 		font-size: 1.1rem;
+	}
+	#musicButton, #taskButton {
+		height: 0px;
+		width: 120px;
 	}
 }
 /* End of Media Queries */

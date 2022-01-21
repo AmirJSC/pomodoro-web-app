@@ -14,7 +14,9 @@
         type = "image/x-icon">
 	</head>
 	<body>
-		<main class="container" id="main-container">
+		<!-- d-flex justify-content-md-center align-items-md-center bg-success -->
+		<main>
+		<div class="" id="main-container">
 			<!-- Navigation Bar -->
 			<nav class="navbar navbar-expand-md navbar-light">
 				<a class="navbar-brand" id="pomodoit" href="./index.html">
@@ -39,9 +41,9 @@
 				<!-- End of [Pomodoro, Short Break, Long Break] tabs -->
 				<!-- Start of Countdown -->
 				<div class="d-flex flex-row align-items-center justify-content-center mx-auto" id="timerCountdown">
-					<p class="clockFont" id="minutes">25</p>
-		 			<p class="clockFont" id="colon">:</p>
-		 			<p class="clockFont" id="seconds">00</p>
+					<p  id="minutes">25</p>
+		 			<p id="colon">:</p>
+		 			<p  id="seconds">00</p>
 		 		</div>
 		 		<!-- End of Countdown -->
 		 		<div class="d-flex flex-row justify-content-center mx-auto">
@@ -69,9 +71,42 @@
 					</div>
 				</div>
 				<!-- End of Tasks/Music -->
-
-			</main>
-		</div>
+			</div>
+		</main>
+		<article class="mx-auto p-4 mt-5">
+			<section class="my-5">
+				<h2 class="font-weight-bold my-4">What is Pomodoit?</h2>
+				<p>Pomodoit is a productivity web application modeled after the Pomodoro technique. The goal of this app is to help people focus on their tasks, be it coding, writing, or studying. Pomodoit allows you to customize time durations, review reports to see how your focus is improving, and offers music to help you block out distractions.</p>
+			</section>
+			<section class="my-5 pt-4">
+				<h2 class="font-weight-bold my-4">What is Pomodoro technique?</h2>
+				<p>The Pomodoro technique was invented by Francesco Cirillo  in the 1980s and was named  after the tomato-shaped timer he used to track his work as a university student. The pomodoro technique uses a timer to break work into intervals, traditionally 25 minutes (a pomodoro), spaced out by 5 minute breaks. A 15 minute break is then taken after four pomodoro sessions.</p>
+				<div class="ml-lg-5 mt-2 mb-5">
+					<h3 class="font-weight-bold">Tips</h3>
+					<li>If a task requires more than five pomodoros, break it down into smaller, actionable steps.</li>
+					<li>If a task takes less than one Pomodoro, combine it with the other simple tasks.</li>
+					<li>Adjust the sessions or breaks according to your preference.</li>
+					<li>Be flexible with your breaks. Take a break if you must.</li>
+				</div>
+			</section>
+			<section class="my-5 pt-4">
+				<h2 class="font-weight-bold my-4">How do you use Pomodoit?</h2>
+				<ol class="ml-4">
+					<li>Add a Task. You may also set a music (optional).</li>
+					<li>Start the timer and focus on the task at hand until the timer rings.</li>
+					<li>Take 5-minute breaks in between.</li>
+					<li>After four pomodoros, take a 15-minute break.</li>
+				</ol>
+			</section>
+			<section class="my-5 pt-4">
+				<h2 class="font-weight-bold my-4">Features</h2>
+					<li>Login to track progress and receive weekly and monthy reports on your productivity</li>
+					<li>Responsiveness for mobile and desktop devices</li>
+					<li>Customizable timer settings</li>
+					<li>Audio notification at the end of a time period</li>
+					<li>Music to block out surrounding noise</li>
+			</section>
+		</article>
 		<!-- JS Dependencies -->
 		<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
