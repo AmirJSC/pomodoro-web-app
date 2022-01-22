@@ -28,17 +28,32 @@ h2 {
 	font-size: 2.1rem;
 	color: rgb(61, 0, 0);
 }
- li {
- 	font-size: 1.8rem;
+
+ li, p {
+ 	font-size: 1.7rem;
  	line-height: 3rem;
  }
- p {
- 	font-size: 1.72rem;
- 	line-height: 3rem;
+
+ ul.features, ul.tips  {
+ 	list-style-position: inside;
+ 	list-style-type: none;
  }
+
+ ol.howTo {
+	list-style-position: inside;
+ }
+
  h3 {
  	font-size: 1.8rem;
  }
+
+ ul li::before  {
+  content: "\2022";  
+  color: #ef6c57;
+  font-weight: bold; 
+  display: inline-block; 
+  width: 1em; 
+}
 
  #main-container {
  	background: #ef6c57;
@@ -143,7 +158,23 @@ h2 {
 .show {display:block;}
 /* End of Music dropdown */
 /* ------------------------------------------------------------------------ */
+/* Start of Footer */
+#coffee {
+	cursor: pointer;
+	width: 15rem;
+}
 
+.blue-remove {
+    color: #303030;
+}
+
+.blue-remove:hover {
+    color:#ef6c57;
+    text-decoration:none; 
+    cursor:pointer;  
+}
+/* End of Footer */
+/* ------------------------------------------------------------------------ */
 /* Start of Media Queries */
 @media only screen and (max-width: 2000px) {
 	/* Laptop screen */
