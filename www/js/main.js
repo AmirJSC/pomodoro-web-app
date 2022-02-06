@@ -4,32 +4,35 @@ const timer = {
 	longBreak: 15,
 	sessions: 0
 };
-// Initialize values for the timer
-let interval;
-let isTimerRunning = false;
-// Initialize values for the music/audio
-let audio = new Audio();
+
+
+// Control Button is the Play, Pause while Mode Buttons are the Pomodoro, Short Break, Long Break buttons
+const controlButton = document.querySelector("#controlButton"), 
+	  resetButton = document.querySelector("#resetButton"),
+	  modeButton = document.querySelector("#mode-buttons"),
+	  audioLinks = document.querySelectorAll(".audioLinks");
+
+
+let isTimerRunning = false,
+	audio = new Audio(),
+	isAudioPlaying = false,
+	interval;
+
+
 audio.loop = true;
-let isAudioPlaying = false;
-
-document.querySelector("#resetButton").addEventListener('click', resetTimer);
-// Mode Buttons - Pomodoro, Short Break, Long Break
-document.querySelector("#mode-buttons").addEventListener('click', handleMode);
-document.querySelectorAll(".audioLinks").forEach((audio) => audio.addEventListener('click', selectAudio));
-
-
-// Control Button - Play, Pause
-controlButton = document.querySelector("#controlButton");
 controlButton.addEventListener("click", setupControlButton);
+resetButton.addEventListener('click', resetTimer);
+modeButton.addEventListener('click', handleMode);
+audioLinks.forEach((audio) => audio.addEventListener('click', selectAudio));
+
 
 
 function setupControlButton() {
 	const control = controlButton.dataset.control;
 	switch (control) {
 		case 'start':
-		// Plays the audio only when the mode is pomodoro
 		if (timer.mode === "pomodoro") {
-			audio.play();
+			playAudio();
 			isAudioPlaying = true;
 		}
 
@@ -38,7 +41,7 @@ function setupControlButton() {
 		case'stop':
 		// Stops the audio
 		if (timer.mode === "pomodoro") {
-			fix(audio);
+			pauseAudio();
 			isAudioPlaying = false;
 		}
 
@@ -90,15 +93,13 @@ function resetTimer() {
 	if (isTimerRunning === true) {
 		if (confirm("Are you sure you want to reset? The remaining time will not be tallied in the report.") === true) {
 			stopTimer();
-			fix(audio);
+			pauseAudio();
 			switchMode(timer.mode);
 			isTimerRunning = false;
 		}
 		else {
 			clearInterval(interval);
-			if (timer.mode === 'pomodoro') {
-				audio.play();
-			}
+			playAudio();
 			startTimer();
 		}
 	}
@@ -123,7 +124,7 @@ function switchMode(mode) {
 	// Stops the audio when you switch mode from pomodoro to shortBreak or longBreak.
 	// This is the error if if-statement is not playing: DOMException: play() failed because the user didn't interact with the document first.
 	if (isAudioPlaying) {
-		fix(audio);
+		pauseAudio();
 	}
 	timer.mode = mode;
 	timer.remainingTime = timer[mode] * 60;
@@ -148,7 +149,7 @@ function handleMode(event) {
 		}
 		else {
 			clearInterval(interval);
-			audio.play();
+			playAudio();
 			startTimer();
 			return;
 		}
@@ -158,6 +159,7 @@ function handleMode(event) {
 	switchMode(mode);
 	stopTimer();
 }
+
 
 // Sound that plays whenever you finish a mode.
 function breakSound() {
@@ -178,7 +180,7 @@ function selectAudio() {
 
 // To fix the error: The play() request was interrupted by a call to pause(). Saw this in StackOverflow.
 // This pauses the audio currently playing.
-function fix(audio) {
+function pauseAudio() {
 	var thePromise = audio.play();
 	if (thePromise != undefined) {
 		thePromise.then(function() {
@@ -186,6 +188,14 @@ function fix(audio) {
 		});
 	}
 }
+
+
+function playAudio() {
+	if (timer.mode === "pomodoro") {
+		audio.play();
+	}
+}
+
 
 // hides the dropup after selecting an audio
 window.onclick = function() {
@@ -197,8 +207,10 @@ window.onclick = function() {
 	}
 }
 
+
 // Initializes the mode at Pomodoro
 window.onload = switchMode('pomodoro');
+
 // Asks the user if he wants to leave the web app
 window.onbeforeunload = function(){
 	if (isTimerRunning)
