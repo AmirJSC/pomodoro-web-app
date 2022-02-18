@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const dotenv = require('dotenv');
 const userRoutes = require('./routes/userRoutes');
+const taskRoutes = require('./routes/taskRoutes');
 
 // Server & MongoDB setup
 dotenv.config();
@@ -26,4 +27,5 @@ db.on('error', console.error.bind(console, "Connection Error with MongoDB"));
 db.once('open', () => console.log('successfully connected to MongoDB.'));
 
 app.use('/users', userRoutes);
+app.use('/tasks/', taskRoutes);
 app.listen(port, () => console.log(`Successfully connected to port ${port}`));
