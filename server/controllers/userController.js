@@ -4,6 +4,7 @@ const auth = require('../auth');
 
 module.exports.registerUser = async (reqBody) => {
 	const {email, password} = reqBody;
+
 	try {
 		const isEmailTaken = await User.find({email: email}).then(result => {
 			if(result.length > 0) {
@@ -37,7 +38,8 @@ module.exports.loginUser = async (reqBody) => {
 
 	try {
 		let user = await User.findOne({email: email});
-		if(user=== null) {
+		// findOne returns null (falsy) if no email is found. 
+		if(!user) {
 			return 'No user is found with this email';
 		}
 		else {

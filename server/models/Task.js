@@ -5,10 +5,9 @@ const taskSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    tasks: [{
+    taskList: [{
         task: {
             type: String, 
-            unique: true, 
             required: true
         },
         description: {
@@ -17,6 +16,10 @@ const taskSchema = new mongoose.Schema({
         completed: {
             type: Boolean, 
             default: false
+        },
+        createdOn: {
+            type: Date,
+            default: new Date()
         }
     }]
 });
