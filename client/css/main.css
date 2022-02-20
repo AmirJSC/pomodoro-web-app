@@ -22,6 +22,10 @@
  main {
  	height: 100%;
  	widht: 100%;
+ 	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
  }
 
 h2 {
@@ -89,9 +93,9 @@ h2 {
 }
 /* End of Navigation Bar */
 /* ------------------------------------------------------------------------ */
-/* Start of [Pomodoro, Short Break, Long Break] tabs */
+/* Start of [Pomodoro, Short Break, Long Break] tabs & countdown timer */
 .timer-mode {
-	color: #1e1e1e;
+	color: #f2f2f2;
 	transition: all 0.3s ease-in-out;
 	background: #ef6c57;
 	border: none;
@@ -107,6 +111,23 @@ h2 {
 
 .timer-mode:visited {
 	background: hsl(0, 100%, 94%);
+}
+
+#timerCountdown {
+	height: 25rem;
+	width: 30rem;
+}
+
+#minutes, #colon, #seconds{
+		font-size: 12rem;
+		font-family: 'Nunito', sans-serif;
+		color: #f2f2f2;
+}
+
+#pomodoroCount {
+	font-size: 1.5rem;
+	color: #f2f2f2;
+	opacity: .85;
 }
 /* End of [Pomodoro, Short Break, Long Break] tabs 
 /* ------------------------------------------------------------------------ */
@@ -185,27 +206,6 @@ h2 {
 		height: 4rem;
 		width: 15rem;
 		font-size: 1.5rem;
-		color: #f2f2f2;
-	}
-	#pomodoroCount {
-		font-size: 1.5rem;
-		color: #f2f2f2;
-		opacity: .85;
-	}
-	#timerCountdown {
-		height: 25rem;
-		width: 30rem;
-	}
-	#minutes, #colon, #seconds{
-		font-size: 12rem;
-		font-family: 'Nunito', sans-serif;
-		color: #f2f2f2;
-	}
-	main {
-		display: flex;
-		flex-direction: row;
-		align-items: center;
-		justify-content: center;
 	}
 	#main-container {
 		border-radius: 8px;
@@ -237,7 +237,6 @@ h2 {
 		height: 3.733rem;
 		width: 14.00rem;
 		font-size: 1.5rem;
-		color: #f2f2f2;
 	}
 	#timerCountdown {
 		height: 26rem;
@@ -252,10 +251,6 @@ h2 {
 	.timer-mode {
 		height: 3.2rem;
 		width: 12rem;
-		font-size: 1.4rem;
-		color: #f2f2f2;
-	}
-	#pomodoroCount{
 		font-size: 1.4rem;
 	}
 	#timerCountdown {
@@ -278,10 +273,6 @@ h2 {
 		height: 2.667rem;
 		width: 10rem;
 		font-size: 1.3rem;
-		color: #f2f2f2;
-	}
-	#pomodoroCount {
-		font-size: 1.3rem;
 	}
 	#timerCountdown {
 		height: 20rem;
@@ -289,8 +280,6 @@ h2 {
 	}
 	#minutes, #colon, #seconds{
 		font-size: 9.3rem;
-		font-family: 'Nunito', sans-serif;
-		color: #f2f2f2;
 	}
 	#main-container {
 		border-radius: 0px;
@@ -315,10 +304,6 @@ h2 {
 		height: 2.4rem;
 		width: 9rem;
 		font-size: 1.3rem;
-		color: #f2f2f2;
-	}
-	#pomodoroCount {
-		font-size: 1.3rem;
 	}
 }
 @media only screen and (max-device-width: 350px) {
@@ -330,7 +315,6 @@ h2 {
 		height: 2.0rem;
 		width: 7rem;
 		font-size: 1.1rem;
-		color: #f2f2f2;
 	}
 	#timerCountdown {
 		height: 18rem;
@@ -338,14 +322,9 @@ h2 {
 	}
 	#minutes, #colon, #seconds{
 		font-size: 8.0rem;
-		font-family: 'Nunito', sans-serif;
-		color: #f2f2f2;
-	}
-	#pomodoroCount {
-		font-size: 1.1rem;
 	}
 	#musicButton, #taskButton {
-		height: 0px;
+		height: 50px;
 		width: 120px;
 	}
 }
