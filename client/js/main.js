@@ -5,25 +5,30 @@ const timer = {
 	sessions: 0
 };
 
-// Control Button is the Play, Pause while Mode Buttons are the Pomodoro, Short Break, Long Break buttons
+// Control Button is the Play, Pause button while Mode Buttons are the Pomodoro, Short Break, and Long Break buttons
 const controlButton = document.querySelector("#controlButton"), 
-   	resetButton = document.querySelector("#resetButton"),
-    modeButton = document.querySelector("#mode-buttons"),
-	audioLinks = document.querySelectorAll(".audioLinks");
+resetButton = document.querySelector("#resetButton"),
+modeButton = document.querySelector("#mode-buttons"),
+audioLinks = document.querySelectorAll(".audioLinks");
 
 let isTimerRunning = false,
-    audio = new Audio(),
-	isAudioPlaying = false,
-	interval;
+// Creates an html audio element
+audio = new Audio(),
+isAudioPlaying = false,
+interval;
 
+// Audio element will automatically play again and be on a loop. 
 audio.loop = true;
 
+// Event Listeners
 controlButton.addEventListener("click", setupControlButton);
 resetButton.addEventListener('click', resetTimer);
 modeButton.addEventListener('click', handleMode);
 audioLinks.forEach((audio) => audio.addEventListener('click', selectAudio));
 
+// Clicking on the control buttons(play, pause buttons) will trigger this function.
 function setupControlButton() {
+	// Gets the value of the data-control attribute in the control button element.
 	const control = controlButton.dataset.control;
 	switch (control) {
 		case 'start':
@@ -35,7 +40,7 @@ function setupControlButton() {
 			break;
 		case'stop':
 			// Stops the audio
-			if (timer.mode === "pomodoro") {
+			if (timer.mode === "pomodoro" && isAudioPlaying) {
 				pauseAudio();
 				isAudioPlaying = false;
 			}
@@ -45,6 +50,7 @@ function setupControlButton() {
 }
     
 function startTimer()  {
+	// Changes the value of the data-control attribute in the control button element to stop.
 	controlButton.dataset.control  = 'stop';
 	controlButton.classList.remove("fa-play");
 	controlButton.classList.add("fa-pause");
@@ -73,6 +79,7 @@ function startTimer()  {
 }
 
 function stopTimer() {
+	// Changes the value of the data-control attribute in the control button element to start..
 	controlButton.dataset.control  = 'start';
 	controlButton.classList.remove("fa-pause");
 	controlButton.classList.add("fa-play");
@@ -95,6 +102,7 @@ function resetTimer() {
 	}
 }
 
+// For updating the interface.
 function updateClock() {
 	let minutes = Math.floor(timer.remainingTime / 60);
 	let seconds = timer.remainingTime % 60;
@@ -104,10 +112,13 @@ function updateClock() {
 	document.getElementById('minutes').innerHTML = minutes;
 	document.getElementById('seconds').innerHTML = seconds;
 
+	// For text shown on the tab
 	const titleMsg = (timer.mode === 'pomodoro') ? 'Time to work!' : 'Take a break!'
 	document.title = `${minutes}:${seconds} - ${titleMsg}`;
 }
 
+
+// switchMode is called as soon as the app is loaded (see at the bottom of this code).
 function switchMode(mode) {
 	// Stops the audio when you switch mode from pomodoro to shortBreak or longBreak.
 	// This is the error if if-statement is not playing: DOMException: play() failed because the user didn't interact with the document first.
@@ -115,7 +126,9 @@ function switchMode(mode) {
 		pauseAudio();
 	}
 	timer.mode = mode;
+	// Adds remaingTime property to the timer object. 
 	timer.remainingTime = timer[mode] * 60;
+
 
 	const currentMode = document.getElementsByClassName("active");
 	currentMode[0].className = currentMode[0].className.replace(" active", "")
@@ -124,6 +137,7 @@ function switchMode(mode) {
 	updateClock();
 }
 
+// Clicking on the Pomodoro, Short Break or Long Break modes will trigger this function. 
 function handleMode(event) {
 	const mode = event.target.id;
 	// First if-statement asks if the timer is currently running. 
